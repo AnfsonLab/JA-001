@@ -1,0 +1,110 @@
+2020/05/22   V1.2
+modify 
+1. SET-TEMP from 1degree to 0.1 degree
+2. PMV function 
+3. EEPROM program
+4. RS232 program for PMV check
+5. delete init modbus address display
+
+2020/05/29	V1.3
+1. modify error for v1.2 code 
+2. new PID spec. add
+
+2020/06/23	V1.4
+1.modify for PMV operation stop and reset for d3,d7,d8 
+2.modify 1. 防凍結保護溫度設定範圍，目前是0~10改為-50~50
+3. When not in display_mode_1 error happen. The system didn't auto entry 
+error mode display.
+
+2020/08/05	V1.5
+1. modify PMV operation
+2. manual real temp command "T250"
+
+2020/09/25	V1.6
+1. modify current sensor checking time from 1 sec to 2 sec.
+
+2020/10/05	V1.7
+1. modify for PMV test code flag.
+2. modify PMV (set temp - real temp) and ( real temp - set temp)
+
+2020/10/19	V1.8
+1. modify for PMV test 
+
+2020/11/06	V1.9
+1. key press operation
+2. eeprom default value error
+3. PMV need to full operate before next PMV position adjust.
+4. output current value on RS-232 
+
+2020/11/06	V2.0
+1. current over, voltage over and under range. error operation didn't turn pump off. 
+   modify to turn off all relay.
+2. modify key ad value and range.
+
+2020/11/06	V2.1
+1. RS232 output voltage has error adjust relay on/off offset.
+2. Jason modify error code list.Jason-001(option v1.6)
+3. PMV change from 200 step/sec to 100 step/sec
+
+2020/11/06	V2.2
+1. current opertion  current_data_max has error 
+
+2021/02/05	V2.3
+1. LP error operation spec.change.
+2. Flow detect spec. change
+3. Current sensor add 8 for 0.4A offset
+
+
+2021/02/05	V2.4
+1. modify sensor check in production mode from 4 sensor to 5 sensor
+
+2021/02/25	V2.5
+1. modify 3 error on v2.4 c07,c06,p01
+
+2021/03/30	V2.6
+1. modify when power off some sensor will let the eeprom crash.
+2. add modbus function modbus v6.2
+
+2021/04/14	V2.7
+1. modify when power off some sensor will let the eeprom crash. Fix for v2.6 has some problem.
+
+2021/04/16	V2.8
+1. V2.7 still has eeprom error. change the sensor check time form 01.sec to 1 sec
+2. modify modbus output, relay output switch output
+
+2021/04/25  V6.8
+1. C04、P03、P06、P07主要修改為出現異常時只顯示故障碼ERROR繼電器不動作
+2. #define ERROR_RLY_NORMAL 1   /* 1 for normal operation, 0 for error relay not on */
+
+2021/04/16	V2.9
+1. modify when power off some sensor will let the eeprom crash.
+2. c1,c2,c3,c5,d2,d5,e1,e7 check time from 1 sec change to 2 sec. #define SENSOR_DEBUNSE	20   /* 1 for 0.1 sec */
+
+2021/05/03	V3.0
+1. modify when power off some sensor will let the eeprom crash. maybe because of update status system on/off, 
+   caused eeprom error. mask off keep on/off in eeprom.
+2. add low power reset function set for low power 3.98V
+
+2021/05/04	V3.1
+1. add 0xec and oxed for test in R_IIC.c
+2. mask error code keep in eeprom function in main.c
+3. add check temperture sensor delay (SENSOR_DEBUNSE) for 0xe2,0xe3,0xe4,0xe5,0xe6  
+
+2021/05/05	V3.2
+1. unmask error code keep in eeprom function in main.c
+2. mask operation status check sum operation, in IIC_check_init
+
+2021/05/07	V3.3
+1. error_code_backup_count operation caused eeprom function not update error code
+2. #define	ERROR_BACKUP_SET	2
+
+2021/05/14	V3.4
+1. R_IIC.C line 611 add back error code 0xed
+2. R_IIC.C line 945 add delay 2 sec to save set-temp value
+3. R_IIC.C line 404 add back check if (STCEN0 != 1U)    /* Case of bus non-liberating. */ no big different
+4. R_IIC.C line 483,372 loop_counter < LOOP_COUNT_VALUE    value from 105 to 205   
+   big change for eeprom read/write stable
+
+2021/05/29	V3.5 (same as code V3.4 )
+1. C04、P03、P06、P07主要修改為出現異常時只顯示故障碼ERROR繼電器不動作
+2. #define ERROR_RLY_NORMAL 1   /* 1 for normal operation, 0 for error relay not on */

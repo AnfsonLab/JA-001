@@ -1,0 +1,14 @@
+2019/01/28
+Power board SW version 3.1
+
+Fix issues
+1.	Add remote ON/OFF enable/disable function
+2.	Add power return auto system on function ( SW DIP2 	Bit 2)
+3.	Alarm error relay will turn on and turn off when system turn off
+4.	Add new 2 item for set-temp range 
+
+Knowing issues
+1.	LCD function need to check
+2.	Watergate operation need to check
+3.	PMV function need to check for 2000 step or 5000 step
+
